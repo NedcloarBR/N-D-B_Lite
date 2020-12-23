@@ -24,22 +24,13 @@ module.exports = class TicketMessageCommand extends BaseCommand {
         ])
         .setFooter(message.guild.name, message.guild.iconURL())
         .setTimestamp()
-    const msg = await message.channel.send(embed);
-    //const msg = await message.channel.messages.fetch('791118086853754940');
+    //const msg = await message.channel.send(embed);
+    const msg = await message.channel.messages.fetch('791118086853754940');
     //msg.edit(embed);
 
     msg.react(`${ThreeDSEmoji}`);
     msg.react(`${SwitchEmoji}`);
     msg.react(`${PSPEmoji}`);
     msg.react(`${PSVITAEmoji}`);
-
-    // if(message.id === "791118086853754940") {
-    //   const msgEdit = await message.edit(embed);
-
-    //   msgEdit.react(`${ThreeDSEmoji}`);
-    //   msgEdit.react(`${SwitchEmoji}`);
-    //   msgEdit.react(`${PSPEmoji}`);
-    //   msgEdit.react(`${PSVITAEmoji}`);
-    // }
   }
 }
