@@ -19,6 +19,7 @@ module.exports = class TicketMessageReactionAddEvent extends BaseEvent {
     const guild = reaction.message.guild
 
     const Create3DSTicket = require("../../Tickets/Create3DSTicket");
+    const CreateSwitchTicket = require("../../Tickets/CreateSwitchTicket");
     const CreatePSPTicket = require("../../Tickets/CreatePSPTicket");
     const CreatePSVITATicket = require("../../Tickets/CreatePSVITATicket");
     
@@ -52,6 +53,26 @@ module.exports = class TicketMessageReactionAddEvent extends BaseEvent {
           Create3DSTicket(guild, user, GuildDoc, TicketSchema)
         }
         // Create3DSTicket(guild, user, GuildDoc)
+      }
+      if(reaction.message.channel.id === '791044707782098953') {
+        if(reaction.emoji.id === '791318848267223041') { //! Switch
+          const TicketDoc = await TicketSchema.findOne({ GuildId: guild.id, UserId: user.id})
+  
+          if(TicketDoc) {
+            const Channel = guild.channels.cache.get(TicketDoc.ChannelId)
+  
+            if(Channel) {
+              user.send("Você já possui um Ticket Aberto!");
+            } else {
+              await TicketDoc.deleteOne()
+  
+              CreateSwitchTicket(guild, user, GuildDoc, TicketSchema)
+            }
+          } else {
+            CreateSwitchTicket(guild, user, GuildDoc, TicketSchema)
+          }
+          // CreateSwitchTicket(guild, user, GuildDoc)
+        }
       }
       if(reaction.emoji.id === '791053360941105167') { //! PSP
         const TicketDoc = await TicketSchema.findOne({ GuildId: guild.id, UserId: user.id})

@@ -49,8 +49,8 @@ module.exports = async(guild, user, GuildDoc, TicketSchema) => {
       ])
       .setFooter(guild.name, guild.iconURL())
       .setTimestamp();
-    //const msg = await TicketChannel3DS.send(`Reaja com ${TrashEmoji} para fechar o Ticket!`);
-    const msg = await TicketChannel3DS.send(embed);
+    //const msg = await TicketChannelPSP.send(`Reaja com ${TrashEmoji} para fechar o Ticket!`);
+    const msg = await TicketChannelPSP.send(embed);
     msg.react(`${TrashEmoji}`);
     await msg.react("📰");
 
@@ -58,7 +58,7 @@ module.exports = async(guild, user, GuildDoc, TicketSchema) => {
       GuildName: guild.name,
       GuildId: guild.id,
       UserId: user.id,
-      ChannelId: TicketChannel3DS.id,
+      ChannelId: TicketChannelPSP.id,
       MessageId: msg.id
     })
   
