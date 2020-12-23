@@ -1,4 +1,4 @@
-const BaseCommand = require('../../utils/structures/BaseCommand');
+const BaseCommand = require('../../Utils/Structures/BaseCommand');
 
 module.exports = class TestCommand extends BaseCommand {
   constructor() {
