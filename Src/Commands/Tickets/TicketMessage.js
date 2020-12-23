@@ -1,4 +1,4 @@
-const BaseCommand = require('../../utils/structures/BaseCommand');
+const BaseCommand = require('../../Utils/Structures/BaseCommand');
 const Discord = require('discord.js');
 
 module.exports = class TicketMessageCommand extends BaseCommand {
