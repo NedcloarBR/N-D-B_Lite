@@ -111,7 +111,7 @@ module.exports = class TicketMessageReactionAddEvent extends BaseEvent {
         // CreatePSVITATicket(guild, user, GuildDoc)
       } 
     } else { //! Fechar Ticket
-      const TicketDoc = await TicketSchema.findOne({ GuildId: guild.id, UserId: user.id})
+      const TicketDoc = await TicketSchema.findOne({ GuildId: guild.id/*, UserId: user.id*/})
 
       if(TicketDoc.MessageId === reaction.message.id) {
         if(reaction.emoji.id === '791087630863302696') {
@@ -119,7 +119,7 @@ module.exports = class TicketMessageReactionAddEvent extends BaseEvent {
 
           await TicketDoc.deleteOne()
           user.send(`Ticket Fechado!`).catch(err => console.log("Ticket Error: " + err))
-        } else if(reaction.emoji.name === '📰') {
+        } else if(reaction.emoji.name === '📰') { //! Transcript Ticket
           const msgs = await fetchAll.messages(reaction.message.channel, {
             reverseArray: true
           });

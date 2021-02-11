@@ -45,7 +45,8 @@ module.exports = async(guild, user, GuildDoc, TicketSchema) => {
       .setColor("#00c26f")
       .setDescription([
           `Reaja com ${TrashEmoji} para fechar o Ticket!`,
-          `Reaja com 📰 para fazer a Transcrição do Ticket!`
+          `Reaja com 📰 para fazer a Transcrição do Ticket!`,
+          `Caso a Reação não funcione use o comando \`%fecharticket\` `
       ])
       .setFooter(guild.name, guild.iconURL())
       .setTimestamp();
